@@ -1,9 +1,9 @@
 package br.com.algorithms.sort;
 
-public class SelectionSort extends Sort<Integer> {
+public class SelectionSort<E extends Comparable<E>> extends Sort<E> {
 
 	@Override
-	public void sort(Integer[] data) {
+	public void sort(E[] data) {
 		int n = data.length;
 		for (int i = 0; i < n; i++) {
 			int min = i;
