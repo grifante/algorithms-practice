@@ -2,12 +2,13 @@ package br.com.algorithms.collection;
 
 import java.util.Iterator;
 
-public class LinkedListQueue<E> implements Iterable<E> {
+public class LinkedListQueue<E> implements Queue<E> {
 
 	private Node first;
 	private Node last;
 	private int size;
 
+	@Override
 	public void enqueue(E item) {
 		Node oldLast = last;
 
@@ -21,6 +22,7 @@ public class LinkedListQueue<E> implements Iterable<E> {
 		size++;
 	}
 
+	@Override
 	public E dequeue() {
 		E item = first.item;
 		first = first.next;
@@ -30,10 +32,12 @@ public class LinkedListQueue<E> implements Iterable<E> {
 		return item;
 	}
 
+	@Override
 	public int size() {
 		return size;
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return size == 0;
 	}
