@@ -17,7 +17,7 @@ public class SortTest {
 
 	@BeforeClass
 	public static void initData() {
-		randomData = new Random().ints(1000_000).boxed().toArray(Integer[]::new);
+		randomData = new Random().ints(10_000).boxed().toArray(Integer[]::new);
 		sortedData = IntStream.rangeClosed(1, randomData.length).boxed().toArray(Integer[]::new);
 	}
 
