@@ -13,7 +13,7 @@ public class BST<E extends Comparable<E>, T> {
 		return size(root);
 	}
 
-	int size(Node node) {
+	private int size(Node node) {
 		return node == null ? 0 : node.n;
 	}
 
@@ -252,7 +252,7 @@ public class BST<E extends Comparable<E>, T> {
 		return size() == 0;
 	}
 
-	protected class Node {
+	private class Node {
 
 		E key;
 		T val;
