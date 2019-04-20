@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class RedBlackBSTTest {
 
-	private RedBlackBST<Integer, Integer> bst;
+	private BinarySearchTree<Integer, Integer> bst;
 
 	@Before
 	public void init() {

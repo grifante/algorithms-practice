@@ -5,13 +5,32 @@ import java.util.NoSuchElementException;
 import br.com.algorithms.collection.LinkedListQueue;
 import br.com.algorithms.collection.Queue;
 
-public class RedBlackBST<E extends Comparable<E>, V> {
+public class RedBlackBST<E extends Comparable<E>, V> implements BinarySearchTree<E, V> {
 
 	private static final boolean RED = true;
 	private static final boolean BLACK = false;
 
 	private Node root;
 
+	@Override
+	public V get(E key) {
+		return get(root, key);
+	}
+
+	private V get(Node x, E key) {
+		if (x == null)
+			return null;
+
+		int cmp = key.compareTo(x.key);
+		if (cmp < 0)
+			return get(x.left, key);
+		else if (cmp > 0)
+			return get(x.right, key);
+		else
+			return x.val;
+	}
+
+	@Override
 	public void delete(E key) {
 		if (!isRed(root.left) && !isRed(root.right))
 			root.color = RED;
@@ -48,6 +67,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		return balance(x);
 	}
 
+	@Override
 	public void deleteMin() {
 		if (!isRed(root.left) && !isRed(root.right))
 			root.color = RED;
@@ -56,6 +76,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 			root.color = BLACK;
 	}
 
+	@Override
 	public void deleteMax() {
 		if (!isRed(root.left) && !isRed(root.right))
 			root.color = RED;
@@ -121,10 +142,12 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		return x;
 	}
 
+	@Override
 	public Iterable<E> keys() {
 		return keys(min(), max());
 	}
 
+	@Override
 	public Iterable<E> keys(E min, E max) {
 		Queue<E> queue = new LinkedListQueue<>();
 		keys(root, queue, min, max);
@@ -148,6 +171,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 			keys(x.right, queue, min, max);
 	}
 
+	@Override
 	public E ceiling(E key) {
 		Node x = ceiling(root, key);
 		if (x == null)
@@ -170,6 +194,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		return t != null ? t : x;
 	}
 
+	@Override
 	public E floor(E key) {
 		Node x = floor(root, key);
 		if (x == null)
@@ -192,6 +217,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		return t != null ? t : x;
 	}
 
+	@Override
 	public int rank(E key) {
 		return rank(root, key);
 	}
@@ -208,6 +234,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 			return size(x.left);
 	}
 
+	@Override
 	public E select(int i) {
 		if (i < 0 || i >= size())
 			throw new IllegalArgumentException();
@@ -226,6 +253,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 			return x;
 	}
 
+	@Override
 	public E min() {
 		if (isEmpty())
 			throw new NoSuchElementException();
@@ -238,6 +266,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		return min(x.left);
 	}
 
+	@Override
 	public E max() {
 		if (isEmpty())
 			throw new NoSuchElementException();
@@ -288,6 +317,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		h.right.color = !h.right.color;
 	}
 
+	@Override
 	public int size() {
 		return size(root);
 	}
@@ -296,6 +326,7 @@ public class RedBlackBST<E extends Comparable<E>, V> {
 		return node == null ? 0 : node.n;
 	}
 
+	@Override
 	public void put(E key, V value) {
 		root = put(root, key, value);
 		root.color = BLACK;

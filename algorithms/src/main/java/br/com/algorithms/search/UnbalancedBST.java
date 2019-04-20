@@ -5,10 +5,11 @@ import java.util.NoSuchElementException;
 import br.com.algorithms.collection.LinkedListQueue;
 import br.com.algorithms.collection.Queue;
 
-public class BST<E extends Comparable<E>, T> {
+public class UnbalancedBST<E extends Comparable<E>, T> implements BinarySearchTree<E, T> {
 
 	private Node root;
 
+	@Override
 	public int size() {
 		return size(root);
 	}
@@ -17,10 +18,12 @@ public class BST<E extends Comparable<E>, T> {
 		return node == null ? 0 : node.n;
 	}
 
+	@Override
 	public Iterable<E> keys() {
 		return keys(min(), max());
 	}
 
+	@Override
 	public Iterable<E> keys(E min, E max) {
 		Queue<E> queue = new LinkedListQueue<>();
 		keys(root, queue, min, max);
@@ -44,6 +47,7 @@ public class BST<E extends Comparable<E>, T> {
 			keys(x.right, queue, lo, hi);
 	}
 
+	@Override
 	public void delete(E key) {
 		delete(root, key);
 	}
@@ -73,6 +77,7 @@ public class BST<E extends Comparable<E>, T> {
 		return x;
 	}
 
+	@Override
 	public void deleteMin() {
 		if (isEmpty())
 			throw new NoSuchElementException();
@@ -87,6 +92,7 @@ public class BST<E extends Comparable<E>, T> {
 		return x;
 	}
 
+	@Override
 	public void deleteMax() {
 		if (isEmpty())
 			throw new NoSuchElementException();
@@ -102,6 +108,7 @@ public class BST<E extends Comparable<E>, T> {
 
 	}
 
+	@Override
 	public int rank(E key) {
 		return rank(root, key);
 	}
@@ -118,6 +125,7 @@ public class BST<E extends Comparable<E>, T> {
 			return size(x.left);
 	}
 
+	@Override
 	public E select(int i) {
 		if (i < 0 || i >= size())
 			throw new IllegalArgumentException();
@@ -135,6 +143,7 @@ public class BST<E extends Comparable<E>, T> {
 			return x;
 	}
 
+	@Override
 	public T get(E key) {
 		return get(root, key);
 	}
@@ -152,6 +161,7 @@ public class BST<E extends Comparable<E>, T> {
 			return x.val;
 	}
 
+	@Override
 	public void put(E key, T value) {
 		root = put(root, key, value);
 	}
@@ -173,6 +183,7 @@ public class BST<E extends Comparable<E>, T> {
 
 	}
 
+	@Override
 	public E floor(E key) {
 		Node x = floor(root, key);
 		if (x == null)
@@ -197,6 +208,7 @@ public class BST<E extends Comparable<E>, T> {
 
 	}
 
+	@Override
 	public E ceiling(E key) {
 		Node x = ceiling(root, key);
 		if (x == null)
@@ -222,6 +234,7 @@ public class BST<E extends Comparable<E>, T> {
 			return x;
 	}
 
+	@Override
 	public E min() {
 		if (isEmpty())
 			throw new NoSuchElementException();
@@ -235,6 +248,7 @@ public class BST<E extends Comparable<E>, T> {
 		return min(x.left);
 	}
 
+	@Override
 	public E max() {
 		if (isEmpty())
 			throw new NoSuchElementException();

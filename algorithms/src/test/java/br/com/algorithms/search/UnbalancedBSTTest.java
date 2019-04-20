@@ -10,13 +10,13 @@ import java.util.NoSuchElementException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class BSTTest {
+public class UnbalancedBSTTest {
 
-	private BST<Integer, Integer> bst;
+	private BinarySearchTree<Integer, Integer> bst;
 
 	@Before
 	public void init() {
-		bst = new BST<>();
+		bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -40,7 +40,7 @@ public class BSTTest {
 	
 	@Test
 	public void deleteTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -57,7 +57,7 @@ public class BSTTest {
 
 	@Test
 	public void deleteMaxTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -70,7 +70,7 @@ public class BSTTest {
 
 	@Test
 	public void deleteMinTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -84,7 +84,7 @@ public class BSTTest {
 
 	@Test
 	public void rankTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -98,7 +98,7 @@ public class BSTTest {
 
 	@Test(expected = NoSuchElementException.class)
 	public void rankNSEETest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		assertEquals(0, (int) bst.rank(6));
@@ -106,7 +106,7 @@ public class BSTTest {
 
 	@Test
 	public void selectTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -125,7 +125,7 @@ public class BSTTest {
 
 	@Test
 	public void ceilingTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -137,7 +137,7 @@ public class BSTTest {
 
 	@Test(expected = NoSuchElementException.class)
 	public void ceilingNSEETest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -146,7 +146,7 @@ public class BSTTest {
 
 	@Test
 	public void floorTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -158,7 +158,7 @@ public class BSTTest {
 
 	@Test(expected = NoSuchElementException.class)
 	public void floorNSEETest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(2, 2);
 		bst.put(1, 1);
 		bst.put(3, -3);
@@ -167,7 +167,7 @@ public class BSTTest {
 
 	@Test
 	public void getTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(1, 1);
 		bst.put(2, 2);
 		bst.put(3, 3);
@@ -180,7 +180,7 @@ public class BSTTest {
 
 	@Test
 	public void sizeTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(1, 1);
 		bst.put(2, 2);
 		bst.put(3, 3);
@@ -192,7 +192,7 @@ public class BSTTest {
 
 	@Test
 	public void minTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(-1, 1);
 		bst.put(2, 2);
 		bst.put(-3, 3);
@@ -201,7 +201,7 @@ public class BSTTest {
 
 	@Test
 	public void maxTest() {
-		BST<Integer, Integer> bst = new BST<>();
+		BinarySearchTree<Integer, Integer> bst = new UnbalancedBST<>();
 		bst.put(-1, 1);
 		bst.put(2, 2);
 		bst.put(-3, 3);
